@@ -4,23 +4,11 @@ import os
 # Defina a sua chave de API da OpenAI
 openai.api_key = os.environ['API_KEY_GPT']
 
-def translate_text(text):
-    # Função para traduzir o texto para o inglês usando a API do ChatGPT
+def translate_and_correct_text(text):
+    # Função para traduzir e corrigir o texto usando a API do ChatGPT
     response = openai.Completion.create(
-        engine='text-davinci-003',
-        prompt=text,
-        max_tokens=1024,
-        temperature=0.7,
-        n=1,
-        stop=None,
-    )
-    return response.choices[0].text.strip()
-
-def correct_text(text):
-    # Função para corrigir o texto em inglês usando a API do ChatGPT
-    response = openai.Completion.create(
-        engine='text-davinci-003',
-        prompt=text,
+        engine='gpt-3.5-turbo-16k-0613',
+        prompt=f"Traduza as palavras que estiverem entre asteriscos nesse texto para inglês: {text}\n\nDepois, passe o texto por uma correção ortográfica e me retorne o texto completo corrigido.",
         max_tokens=1024,
         temperature=0.7,
         n=1,
@@ -33,14 +21,8 @@ def process_file(filename):
     with open(filename, 'r+') as file:
         original_text = file.read()
 
-        # Traduzir palavras entre asteriscos para o inglês
-        translated_text = original_text.replace('**', '')
-        translated_text = translate_text(translated_text)
-
-        
-
-        # Corrigir o texto traduzido
-        corrected_text = correct_text(translated_text)
+        # Traduzir e corrigir o texto
+        corrected_text = translate_and_correct_text(original_text)
 
         # Escrever o texto corrigido abaixo do texto original no mesmo arquivo
         file.write('\n\n--- Texto Corrigido ---\n')
