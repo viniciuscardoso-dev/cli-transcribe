@@ -1,6 +1,5 @@
 import openai
 import os
-import time
 
 # Defina a sua chave de API da OpenAI
 openai.api_key = os.environ['API_KEY_GPT']
@@ -38,7 +37,7 @@ def process_file(filename):
         translated_text = original_text.replace('**', '')
         translated_text = translate_text(translated_text)
 
-        time.sleep(2)
+        
 
         # Corrigir o texto traduzido
         corrected_text = correct_text(translated_text)
