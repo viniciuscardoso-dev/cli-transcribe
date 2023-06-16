@@ -7,7 +7,7 @@ openai.api_key = os.environ['API_KEY_GPT']
 def translate_and_correct_text(text):
     # Função para traduzir e corrigir o texto usando a API do ChatGPT
     response = openai.Completion.create(
-        engine='gpt-3.5-turbo-16k-0613',
+        engine='text-davinci-003',
         prompt=f"Traduza as palavras que estiverem entre asteriscos nesse texto para inglês: {text}\n\nDepois, passe o texto por uma correção ortográfica e me retorne o texto completo corrigido.",
         max_tokens=1024,
         temperature=0.7,

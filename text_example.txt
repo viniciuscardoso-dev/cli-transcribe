@@ -10,3 +10,17 @@ the fourty *benefício* is efficiency
 
 the five *benefício* is disaster recover
 
+
+
+--- Texto Corrigido ---
+The five benefits of cloud computing 
+
+The first benefit is the reduction of costs 
+
+The second benefit is remote access 
+
+The third benefit is flexibility 
+
+The fourth benefit is efficiency 
+
+The fifth benefit is disaster recovery
